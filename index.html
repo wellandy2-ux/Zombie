@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>좀비 서바이벌</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-wrap">
+    <canvas id="game"></canvas>
+
+    <div id="hud" class="hidden">
+      <div class="hud-block">
+        <span class="label">체력</span>
+        <div class="bar"><div id="hp-bar"></div></div>
+      </div>
+      <div class="hud-block">
+        <span class="label">파워</span>
+        <div class="bar power"><div id="power-bar"></div></div>
+        <span id="power-ready" class="power-ready hidden">Q 준비!</span>
+      </div>
+      <div class="hud-block">
+        <span class="label">모드</span>
+        <span id="mode-name">-</span>
+      </div>
+      <div class="hud-block">
+        <span class="label">목표</span>
+        <span id="objective">-</span>
+      </div>
+      <div class="hud-block">
+        <span class="label">캐릭터</span>
+        <span id="char-name">-</span>
+      </div>
+      <div class="hud-block">
+        <span class="label">맵</span>
+        <span id="map-name">-</span>
+      </div>
+      <div class="hud-block">
+        <span class="label">점수</span>
+        <span id="score">0</span>
+      </div>
+      <div class="hud-block">
+        <span class="label">웨이브</span>
+        <span id="wave">1</span>
+      </div>
+      <div class="hud-block">
+        <span class="label">킬</span>
+        <span id="kills">0</span>
+      </div>
+      <div id="buffs" class="hud-block buffs hidden"></div>
+    </div>
+
+    <div id="overlay" class="panel">
+      <h1>좀비 서바이벌</h1>
+      <p class="tagline">어둠 속에서 살아남아라</p>
+      <ul class="controls">
+        <li><kbd>WASD</kbd> / <kbd>방향키</kbd> 이동</li>
+        <li><kbd>마우스</kbd> 조준 · 클릭 발사</li>
+        <li><kbd>Space</kbd> 재장전</li>
+        <li><kbd>Q</kbd> 파워 스킬 (게이지 FULL)</li>
+        <li>캐릭터 · 맵 · 모드를 고른 뒤 전투 시작</li>
+      </ul>
+      <button id="start-btn">게임 설정</button>
+    </div>
+
+    <div id="char-select" class="panel hidden">
+      <h1 class="select-title">캐릭터 선택</h1>
+      <p class="tagline">생존자를 골라 주세요</p>
+      <div id="char-grid" class="char-grid"></div>
+      <div class="select-actions">
+        <button id="back-btn" class="btn-secondary">뒤로</button>
+        <button id="to-map-btn" disabled>맵 선택</button>
+      </div>
+    </div>
+
+    <div id="map-select" class="panel hidden">
+      <h1 class="select-title">맵 선택</h1>
+      <p class="tagline">난이도에 따라 장애물과 좀비가 달라집니다</p>
+      <div id="map-grid" class="map-grid"></div>
+      <div class="select-actions">
+        <button id="map-back-btn" class="btn-secondary">캐릭터로</button>
+        <button id="to-mode-btn" disabled>모드 선택</button>
+      </div>
+    </div>
+
+    <div id="mode-select" class="panel hidden">
+      <h1 class="select-title">모드 선택</h1>
+      <p class="tagline">원하는 플레이 형식을 고르세요</p>
+      <div id="mode-grid" class="mode-grid"></div>
+      <div class="select-actions">
+        <button id="mode-back-btn" class="btn-secondary">맵으로</button>
+        <button id="play-btn" disabled>전투 시작</button>
+      </div>
+    </div>
+
+    <div id="gameover" class="panel hidden">
+      <h1 id="end-title">사망</h1>
+      <p id="end-msg">당신은 좀비에게 당했습니다</p>
+      <p class="result">점수 <span id="final-score">0</span> · 킬 <span id="final-kills">0</span> · 웨이브 <span id="final-wave">1</span></p>
+      <div class="select-actions">
+        <button id="retry-btn">다시 하기</button>
+        <button id="reselect-btn" class="btn-secondary">설정 변경</button>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
