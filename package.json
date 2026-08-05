@@ -1,0 +1,46 @@
+{
+  "name": "zombie-survival",
+  "version": "1.0.0",
+  "description": "좀비 서바이벌 - 슈팅 게임",
+  "main": "main.js",
+  "author": "Game2",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win dir",
+    "pack": "electron-packager . ZombieSurvival --platform=win32 --arch=x64 --out=dist --overwrite --asar"
+  },
+  "build": {
+    "appId": "com.game2.zombie-survival",
+    "productName": "ZombieSurvival",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "game.js",
+      "style.css"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false,
+      "signDlls": false
+    }
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2"
+  },
+  "allowScripts": {
+    "electron@33.4.11": true
+  }
+}
